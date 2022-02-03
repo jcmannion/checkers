@@ -1,0 +1,9 @@
+/* Game Board */
+
+#game{
+    border: 7px ridge gray;
+    width: 414px;
+    height: 414px;
+    margin: 50px auto 50px auto;
+    padding-top: 4px;
+}
