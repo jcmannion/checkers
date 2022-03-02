@@ -1,51 +1,58 @@
-import logo from './logo.svg';
 import './App.css';
+import Scoreboard from './Scoreboard.js';
+import React from 'react';
 
-function App() {
-//   for (let i = 1; i <= 8; i++){
+class App extends React.Component {
+  constructor(props) {
+    // Pass the props to the parent Component class so React can manage them
+    super(props)
 
-//     //=======Append 8 vertical rows to the body=======//
+    // Bind the changeName method, explained in this article:
+    // https://ponyfoo.com/articles/binding-methods-to-class-instance-objects)
+    this.updatePlayerNames = this.updatePlayerNames.bind(this);
     
-//         $('#game').append('<div class="row-'+i+'" style="display: inline-block; margin-top: -4px"></div>');
-//         for (let j = 1; j <= 8; j++){
-//             if (i%2!=0){
-//                 if (j%2!=0){
-//                     color='black';
-//                 }else{
-//                     color='red';
-//                 }
-//             } else {
-//                 if (j%2==0){
-//                     color='black';
-//                 }else{
-//                     color='red';
-//                 }
-//             }
-    
-//     //=======Append 8 boxes to the 8 rows, alternating them black and red=======//
-    
-//             $('.row-'+i).append('<div class="boxes box-'+box+'" style="background-color: '+color+'; width: 50px; height: 50px; padding-top: 3px"></div>');
-//             box++;
-//         }
-//     }
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    // Set the initial state with undefined names
+    this.state = {
+      names: {
+        playerOne: undefined,
+        playerTwo: undefined
+      }
+    }
+  }
+
+  /**
+   * 
+   * Updates the app state with predefined names. This is invoked when
+   * the "Update Names" button is pressed.
+   * 
+   * @param {*} event - Not used yet, sorry, Matt is as lazy as w3schools.com :-D
+   */
+  updatePlayerNames(event) {
+    // Sets the names in the App state so the Scoreboard can render them
+    this.setState({
+      names: {
+        playerOne: "Matt",
+        playerTwo: "John"
+      }
+    })
+  }
+
+  /**
+   * 
+   * Renders the following components:
+   *   1) The Scoreboard (in Scoreboard.js) which gets player names from the App state
+   *   2) The "Update Names" button which invokes the updatePlayerNames method
+   * 
+   * @returns the rendered components
+   */
+  render() {
+    return (
+      <div className="App">
+        <Scoreboard names={this.state.names} />
+        <button onClick={this.updatePlayerNames}>Update Names</button>
+      </div>
+    );
+  }
 }
 
 export default App;
