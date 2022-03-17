@@ -1,31 +1,14 @@
-import React from "react";
+import React from "react"
+import {observer} from 'mobx-react-lite';
 
-class Scoreboard extends React.Component {
-  constructor(props) {
-    // Pass the props to the parent Component class so React can manage them
-    super(props)
-  }
+const Scoreboard = observer(({checkers}) => {
+  console.log(`${JSON.stringify(checkers)}`)
+  return (
+    <div>
+      <div>Player one: {checkers.playerOne.name}</div>
+      <div>Player two: {checkers.playerTwo.name}</div>
+    </div>
+  )
+});
 
-  /**
-   * 
-   * Renders player one and player two names based on the props received from App
-   * 
-   * @returns 
-   */
-  render() {
-    return (
-      <div>
-        <h1>Player One:</h1>
-        <div>
-          {this.props.names.playerOne}
-        </div>
-        <h1>Player Two:</h1>
-        <div>
-          {this.props.names.playerTwo}
-        </div>
-      </div>
-    )
-  }
-}
-
-export default Scoreboard;
+export default Scoreboard
