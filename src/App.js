@@ -17,7 +17,7 @@ function App() {
       <Scoreboard checkers={checkers}/>
       <Statusbar />
       <Gameboard />
-      <Startup />
+      <Startup checkers={checkers} />
       <button onClick={
         () => {
           checkers.updatePlayers(

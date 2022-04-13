@@ -2,7 +2,7 @@ import React from "react"
 import {observer} from 'mobx-react-lite';
 
 const Scoreboard = observer(({checkers}) => {
-  console.log(`${JSON.stringify(checkers)}`)
+  console.log(`In Scoreboard.js: ${JSON.stringify(checkers)}`)
   return (
     <div>
       <div>Player one: {checkers.playerOne.name}</div>
